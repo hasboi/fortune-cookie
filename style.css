@@ -1,0 +1,210 @@
+@import url("https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap");
+
+@font-face {
+	font-family: "Recoleta";
+	src: url("font/Recoleta-RegularDEMO.otf") format("opentype");
+	font-weight: normal;
+	font-style: normal;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	outline: none;
+}
+
+body {
+	font-family: "Shadows Into Light Two";
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	position: relative;
+	align-items: center;
+	flex-direction: column;
+	padding: 50px;
+	color: #333;
+	overflow: hidden;
+
+	background-color: #fff8e0;
+	background-image: repeating-conic-gradient(
+		#fff8e0 0deg 90deg,
+		#fff3c4 90deg 180deg,
+		#fff8e0 180deg 270deg,
+		#fff3c4 270deg 360deg
+	);
+	background-size: 100px 100px;
+
+	/* enable animation */
+	animation: drift 30s linear infinite;
+}
+
+@keyframes drift {
+	from {
+		background-position: 0 0;
+	}
+	to {
+		background-position: 200px 200px; /* moves diagonally */
+	}
+}
+
+#cookie {
+	cursor: pointer;
+	user-select: none;
+	transition: transform 0.5s ease, opacity 1s ease;
+	opacity: 1;
+}
+
+#cookie.hidden {
+	transform: translateY(100px) rotate(0);
+	opacity: 0;
+}
+
+h1 {
+	font-family: "Recoleta";
+	text-align: center;
+	font-size: 28px;
+}
+
+#message-wrapper {
+	position: absolute;
+	top: -100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: fit-content;
+	transform: translateY(-50%);
+}
+#message {
+	background: url("paper.jpg") repeat;
+	background-size: contain;
+	background-position: center center;
+	background-attachment: local;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	padding: 10px 20px;
+	white-space: nowrap;
+	scrollbar-width: none;
+	height: 56px;
+	text-align: center;
+	font-size: 24px;
+	width: 2%;
+	transition: none;
+}
+#message.shown {
+	transition: top 1s, width 2s 1s ease;
+	width: 500px;
+}
+
+#message-wrapper.shown {
+	transition: top 1s, width 2s 1s ease;
+	top: 50%;
+}
+
+#roll-left,
+#roll-right {
+	background: url("paper.jpg");
+	background-size: cover;
+	min-height: 60px;
+	border-radius: 2px;
+	z-index: 2;
+	width: 0;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
+#roll-left {
+	box-shadow: 10px 5px 15px rgba(0, 0, 0, 0.35), 3px 2px 6px rgba(0, 0, 0, 0.25),
+		inset 1px 0 2px rgba(255, 255, 255, 0.5);
+}
+#roll-right {
+	box-shadow: -10px 5px 15px rgba(0, 0, 0, 0.35),
+		-3px 2px 6px rgba(0, 0, 0, 0.25), inset -1px 0 2px rgba(255, 255, 255, 0.5);
+}
+
+#message-container {
+	position: absolute;
+	background-color: rgba(0, 0, 0, 0.7);
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+
+#message-container.shown {
+	pointer-events: all;
+	opacity: 1;
+}
+
+button#close {
+	padding: 5px 10px;
+	font-size: 16px;
+	background: url("paper.jpg");
+	background-size: cover;
+	border: none;
+	cursor: pointer;
+	position: fixed;
+	z-index: 3;
+	bottom: 30px;
+}
+
+footer a {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	color: blue;
+}
+
+footer {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	bottom: 30px;
+	width: 100%;
+	text-align: center;
+}
+
+ul {
+	max-width: 300px;
+	margin-top: 10px;
+	font-size: 18px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	position: relative;
+}
+
+ul p {
+	position: absolute;
+	bottom: -40px;
+}
+
+li strong {
+	font-weight: 900;
+}
+
+@media (max-width: 500px) {
+	#curved1,
+	#curved2 {
+		font-size: 24px;
+		max-width: 90px;
+	}
+
+	img {
+		transform: scale(0.8);
+	}
+
+	#message.shown {
+		width: 250px;
+	}
+
+	#message {
+		font-size: 18px;
+	}
+}
